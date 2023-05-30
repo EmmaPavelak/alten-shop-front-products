@@ -1,0 +1,23 @@
+# Fichiers générés par Angular CLI
+/front/dist/
+/front/tmp/
+/front/node_modules/
+
+# Fichier de configuration
+/front/angular.json
+/front/tsconfig.json
+/front/.angular/
+
+# Fichiers de log
+/back/logs/
+
+# Fichiers spécifiques à Eclipse
+/back/.classpath
+/back/.project
+/back/.settings/
+
+# Fichiers spécifiques à Visual Studio Code
+/front/.vscode/
+
+# Dossiers spécifiques à Maven
+/back/target/

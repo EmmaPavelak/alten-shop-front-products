@@ -1,0 +1,9 @@
+# Fichiers générés par Angular CLI
+/dist/
+/tmp/
+/node_modules/
+
+# Fichier de configuration
+/angular.json
+/tsconfig.json
+/.angular/

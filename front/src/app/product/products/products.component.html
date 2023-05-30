@@ -1,0 +1,58 @@
+<p-dataView class="dataview-container" [value]="products" [layout]="layout" [rows]="rows" [paginator]="true"
+  [totalRecords]="totalRecords" [lazy]="true" [pageLinks]="3" [rowsPerPageOptions]="[10, 25, 50]"
+  (onLazyLoad)="onPageChange($event)">
+  <ng-template pTemplate="header">
+    <div class="header">
+      <div class="header-options">
+        <div>
+          <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By"
+            (onChange)="onSortChange($event)" styleClass="mb-2 md:mb-0"></p-dropdown>
+        </div>
+        <div>
+          <input type="text" pInputText placeholder="Search" (keyup)="sortTable($event)">
+        </div>
+      </div>
+
+      <div>
+        <p-dataViewLayoutOptions [layout]="layout"></p-dataViewLayoutOptions>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template let-product pTemplate="listItem">
+    <div class="product-card">
+      <div class="product-image">
+        <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
+          [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" />
+      </div>
+      <div class="product-details">
+        <h2>{{ product.name }}</h2>
+        <p class="product-description">{{ product.description }}</p>
+        <div class="product-price">Price: {{ product.price | currency }}</div>
+        <div class="product-quantity">Quantity: {{ product.quantity }}</div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template let-product pTemplate="gridItem">
+    <div class="col-12 sm:col-6 lg:col-12 xl:col-4 p-2">
+      <div class="p-4 border-1 surface-border surface-card border-round">
+        <div class="flex flex-wrap align-items-center justify-content-between gap-2">
+          <span class="flex align-items-center gap-2">
+            <i class="pi pi-tag"></i>
+            <span class="font-semibold">{{ product.category }}</span>
+          </span>
+        </div>
+        <div>{{ product.inventoryStatus }}</div>
+
+        <h2>{{ product.name }}</h2>
+        <p class="product-description">{{ product.description }} </p>
+
+        <p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+        <div class="flex align-items-center justify-content-between">
+          <span class="text-2xl font-semibold">{{ '$' + product.price }}</span>
+          <button pButton icon="pi pi-shopping-cart" class="p-button-rounded"
+            [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>

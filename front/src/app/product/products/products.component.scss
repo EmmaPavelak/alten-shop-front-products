@@ -1,0 +1,21 @@
+.dataview-container{
+    display: block;
+    width: 750px;
+    margin: 0 auto;
+    .header{
+        display: flex;
+        justify-content: space-between;
+        .header-options{
+            display: flex;
+            gap:8px;
+        }
+    }
+    .product-card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin:  10px;
+
+    }
+}
